@@ -1,6 +1,25 @@
-<html xmlns:th="http://www.thymeleaf.org">
-    <body>
-        <a th:href="@{/user/add}">add</a>
-        <a th:href="@{/user/update}">update</a>
-    </body>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.thymeleaf.org/thymeleaf-extras-shiro">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+<h1>首页</h1>
+<p th:text="${msg}"></p>
+<div shiro:notAuthenticated>
+    <a th:href="@{/login}">登录</a>
+</div>
+<div shiro:authenticated>
+    <a th:href="@{/logout}">logout</a>
+</div>
+<hr>
+<div shiro:hasPermission="user:add">
+    <a th:href="@{/user/add}">add</a>
+</div>
+<div shiro:hasPermission="user:update">
+    <a th:href="@{/user/update}">update</a>
+</div>
+</body>
 </html>

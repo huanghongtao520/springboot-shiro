@@ -1,5 +1,6 @@
 package com.example.springbootshiro.config;
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -58,5 +59,12 @@ public class ShiroConfig {
     @Bean(name = "userRealm")
     public UserRealm userRealm(){
         return new UserRealm();
+    }
+
+    //整合shiroDialect，用来整合shiro-thymeleaf
+    //可以动态显示内容，有某种权限，只显示对应页面
+    @Bean
+    public ShiroDialect getShiroDialect(){
+        return new ShiroDialect();
     }
 }
