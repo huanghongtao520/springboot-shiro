@@ -38,6 +38,11 @@ public class MyShiroController {
             return "login";
         }
     }
+    //未授权页面
+    @RequestMapping("/unauthorized")
+    public String unauthorized(){
+        return "unauthorized";
+    }
 
     @RequestMapping("/user/add")
     public String user(){
